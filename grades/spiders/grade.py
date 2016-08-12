@@ -1,5 +1,6 @@
 # coding: utf-8
 from bs4 import BeautifulSoup
+from HTMLParser import HTMLParser
 from . import grade_index_url
 from . import link_index_url
 from . import grade_detail_url
@@ -14,7 +15,7 @@ def get_grade_detail(s, sid, xnm, xqm, course, jxb_id):
     data = {'xh_id': sid, 'xnm': xnm, 'xqm': xqm,
             'jxb_id': jxb_id, 'kcmc': course}
     r = s.post(detail_url, data, headers=headers)
-    soup = BeautifulSoup(r.content, 'lxml', from_encoding='utf-8')
+    soup = BeautifulSoup(r.content, 'html.parser', from_encoding='utf-8')
     strings = soup.find('table',
         class_="table table-bordered table-striped table-hover"\
                " tab-bor-col-1 tab-td-padding-5"
