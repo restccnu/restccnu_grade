@@ -15,3 +15,11 @@ class NotfoundError(Exception):
 
     def __repr__(self):
         return "{'msg': 'notfound'}"
+
+
+class InternalServerError(Exception):
+	def __init__(self):
+		self.status_code = 500
+
+	def __repr__(self):
+		return "{'msg': 'server error'}"

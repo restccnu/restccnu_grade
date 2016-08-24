@@ -1,8 +1,8 @@
 # coding: utf-8
 
-import requests
 import base64
-from flask import request
+import requests
+from coroutx import request
 from ..errors import ForbiddenError
 from . import info_login_url
 from . import info_login_test_url
@@ -13,6 +13,9 @@ from . import headers
 
 # Authorization: Basic base64(sid:password)
 def info_login():
+    """
+    这里是阻塞的重灾区...
+    """
     LoginUrl = info_login_url
     TestUrl = info_login_test_url
 

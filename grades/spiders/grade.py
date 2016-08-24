@@ -1,4 +1,5 @@
 # coding: utf-8
+
 from bs4 import BeautifulSoup
 from HTMLParser import HTMLParser
 from . import grade_index_url
