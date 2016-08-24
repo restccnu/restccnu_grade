@@ -18,8 +18,7 @@ def get_grade_detail(s, sid, xnm, xqm, course, jxb_id):
     r = s.post(detail_url, data, headers=headers)
     soup = BeautifulSoup(r.content, 'html.parser', from_encoding='utf-8')
     strings = soup.find('table',
-        class_="table table-bordered table-striped table-hover"\
-               " tab-bor-col-1 tab-td-padding-5"
+        class_="table table-bordered table-striped table-hover tab-bor-col-1 tab-td-padding-5"
     ).tbody.stripped_strings
     _strings = list(strings)
     if len(_strings) == 2:
