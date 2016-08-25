@@ -1,6 +1,7 @@
 # coding: utf-8
 
 from bs4 import BeautifulSoup
+from werkzeug.exceptions import InternalServerError
 from HTMLParser import HTMLParser
 from . import grade_index_url
 from . import link_index_url
@@ -42,7 +43,13 @@ def get_grade(s, sid, xnm, xqm):
         'queryModel.showCount': 15, 'queryModel.currentPage': 1,
         'queryModel.sortName': "", 'queryModel.sortOrder': 'asc',
         'time': 1 }
+    # 我处理的快, 学校处理的慢, 所以报错
     r = s.post(grade_url, post_data)
+    yield r
+
+
+def get_data(s, sid, xnm, xqm):
+    r = get_grade(s, sid, xnm, xqm).next()  # r is a generator
     json_data = r.json()
     gradeList = []
     # return gradeList
@@ -56,3 +63,19 @@ def get_grade(s, sid, xnm, xqm):
             'type': item.get('kcgsmc'),
             'jxb_id': item.get('jxb_id')})
     return gradeList
+
+    # json_data = r.json()
+    # if r.status_code == 200:
+    #     json_data = r.json()
+    #     gradeList = []
+    #     # return gradeList
+    #     _gradeList = json_data.get('items')
+    #     for item in _gradeList:
+    #         gradeList.append({
+    #             'course': item.get('kcmc'),
+    #             'credit': item.get('xf'),
+    #             'grade': item.get('cj'),
+    #             'category': item.get('kclbmc'),
+    #             'type': item.get('kcgsmc'),
+    #             'jxb_id': item.get('jxb_id')})
+    #     return gradeList
