@@ -16,10 +16,10 @@ def require_info_login(f):
     @functools.wraps(f)
     def decorator(*args, **kwargs):
         try:
-            s, sid = info_login()  # 阻塞IO
+            _s, s, sid = info_login()  # requests阻塞IO
         except ForbiddenError as e:
             return json.dumps({}), e.status_code
-        rv = f(s, sid, *args, **kwargs)
+        rv = f(_s, s, sid, *args, **kwargs)
         return rv
     return decorator
 
