@@ -2,7 +2,6 @@
 
 from coroutx import route
 from .. import app
-from .decorators import ratelimit
 
 
 headers = {'Content-Type': 'application/json'}
@@ -10,7 +9,6 @@ headers = {'Content-Type': 'application/json'}
 
 @route(app, '/api/')
 @app.tojson
-@ratelimit(300, 15*60) # 300request per 15*60s
 def api_index():
     return {
         'meta': {
