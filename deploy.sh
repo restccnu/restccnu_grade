@@ -1,4 +1,4 @@
 #!/bin/sh
 
-supervisorctl stop grades
-supervisorctl start grades
+supervisorctl stop grade
+supervisorctl start grade
