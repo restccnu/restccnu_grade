@@ -9,7 +9,7 @@ from coroutx import request, current_app, route
 @route(app, '/api/info/login/')
 @require_info_login
 @app.tojson
-def api_info_login(s, sid):
+def api_info_login(_s, s, sid):
     return {}
 
 
