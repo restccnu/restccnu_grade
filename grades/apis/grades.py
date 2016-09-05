@@ -6,6 +6,13 @@ from ..spiders.grade import get_grade, get_grade_detail
 from coroutx import request, current_app, route
 
 
+@route(app, '/api/info/login/')
+@require_info_login
+@app.tojson
+def api_info_login(s, sid):
+    return {}
+
+
 @route(app, '/api/grade/search/')
 @require_info_login  # <-*
 @app.tojson
