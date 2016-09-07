@@ -17,4 +17,5 @@ if __name__ == '__main__':
         port = int(sys.argv[2])
     # grade = ratelimit.RateLimit(app, limit=300, per=60*5)
     # WSGIServer(('localhost', 8090), grade).serve_forever()
-    WSGIServer((host, port), grade).serve_forever()
+    # WSGIServer((host, port), grade).serve_forever()
+    WSGIServer((host, port), app).serve_forever()
