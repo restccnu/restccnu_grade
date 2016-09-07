@@ -15,6 +15,6 @@ if __name__ == '__main__':
     if len(sys.argv) > 1:
         host = sys.argv[1]
         port = int(sys.argv[2])
-    grade = ratelimit.RateLimit(app, limit=300, per=60*5)
+    # grade = ratelimit.RateLimit(app, limit=300, per=60*5)
     # WSGIServer(('localhost', 8090), grade).serve_forever()
     WSGIServer((host, port), grade).serve_forever()
