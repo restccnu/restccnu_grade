@@ -8,6 +8,7 @@ from . import grade_index_url
 from . import link_index_url
 from . import grade_detail_url
 from . import headers
+from . import proxy
 
 
 def get_grade_detail(_s, s, sid, xnm, xqm, course, jxb_id):
@@ -21,7 +22,7 @@ def get_grade_detail(_s, s, sid, xnm, xqm, course, jxb_id):
     data = {'xh_id': sid, 'xnm': xnm, 'xqm': xqm,
             'jxb_id': jxb_id, 'kcmc': course}
     try:
-        r = s.post(detail_url, data, headers=headers)
+        r = s.post(detail_url, data, headers=headers, proxies=proxy)
         soup = BeautifulSoup(r.result().content, 'html.parser', from_encoding='utf-8')
         strings = soup.find('table',
             class_="table table-bordered table-striped table-hover tab-bor-col-1 tab-td-padding-5"
@@ -52,7 +53,7 @@ def get_grade(_s, s, sid, xnm, xqm):
         'queryModel.sortName': "", 'queryModel.sortOrder': 'asc',
         'time': 1 }
     try:
-        r = s.post(grade_url, post_data)
+        r = s.post(grade_url, post_data, headers=headers, proxies=proxy)
         json_data = r.result().json()
     except ValueError:
         pass

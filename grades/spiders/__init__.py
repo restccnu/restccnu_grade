@@ -1,6 +1,11 @@
 # coding: utf-8
 # URL Map :)
 
+"""proxy"""
+proxy = {
+    "https": "https://:fuckccnu@218.199.196.131:8388"
+}
+
 """模拟登录"""
 info_login_url = "http://portal.ccnu.edu.cn/loginAction.do"
 info_login_test_url = "http://portal.ccnu.edu.cn/chpass.jsp"
