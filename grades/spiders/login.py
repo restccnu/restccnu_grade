@@ -9,7 +9,7 @@ from . import info_login_url
 from . import info_login_test_url
 from . import lib_login_url
 from . import lib_login_test_url
-from . import headers
+from . import headers, proxy
 
 
 # Authorization: Basic base64(sid:password)
@@ -28,7 +28,7 @@ def info_login():
     _s = Session()
     _s.post(LoginUrl, {
         'userName': sid, 'userPass': password
-    }), headers
+    }, headers=headers, proxies=proxy)
 
     r = _s.get(TestUrl)
     if 'window.alert' in r.content:
