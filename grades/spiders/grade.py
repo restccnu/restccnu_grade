@@ -14,7 +14,10 @@ def get_grade_detail(_s, s, sid, xnm, xqm, course, jxb_id):
     grade_detail = {}
     detail_url = grade_detail_url % sid
     link_url = link_index_url
-    _s.get(link_url)  # 新版与旧版信息门户过渡, 获取cookie
+    try:
+	_s.get(link_url)  # 新版与旧版信息门户过渡, 获取cookie
+    except requests.exceptions.ConnectionError:
+	raise 444
     data = {'xh_id': sid, 'xnm': xnm, 'xqm': xqm,
             'jxb_id': jxb_id, 'kcmc': course}
     try:
