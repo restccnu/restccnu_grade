@@ -1,5 +1,6 @@
 # coding: utf-8
 
+import requests
 from bs4 import BeautifulSoup
 from requests_futures.sessions import FuturesSession
 from werkzeug.exceptions import InternalServerError
