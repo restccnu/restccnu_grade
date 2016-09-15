@@ -54,7 +54,7 @@ def get_grade(_s, s, sid, xnm, xqm):
         'queryModel.sortName': "", 'queryModel.sortOrder': 'asc',
         'time': 1 }
     try:
-        r = s.post(grade_url, post_data, headers=headers, proxies=proxy, timeout=(3.05, 10))
+        r = s.post(grade_url, post_data, headers=headers, proxies=proxy, timeout=(5, 10))
         json_data = r.result().json()
     except ValueError:
         pass
