@@ -1,0 +1,7 @@
+grades:
+    build: .
+    command: gunicorn --name grades -b 0.0.0.0:8090 -w 4 wsgi:app
+    ports:
+        - "8090:8090"
+    volumes:
+        - .:/restccnu_grade
